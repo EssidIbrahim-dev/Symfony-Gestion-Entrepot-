@@ -31,6 +31,9 @@ search:
 index_achat:
     path: /achats
     defaults: { _controller: BackendBundle:Achat:index}
+read_achat:
+    path: /ttachats
+    defaults: { _controller: BackendBundle:Achat:read}
 index_achat_show:
     path: /achats/show/{id}
     defaults: { _controller: BackendBundle:Achat:detailsProduit}
@@ -91,6 +94,9 @@ trait_besoin:
 pdf_generate:
     path: /besoin/pdf/{id}
     defaults: { _controller: BackendBundle:Besoin:pdf}
+pdf_generate_achat:
+    path: /achat/pdf/{id}
+    defaults: { _controller: BackendBundle:Achat:pdf}
 add_cmd:
     path: /cmd/add
     defaults: { _controller: BackendBundle:Commande:addCmd}

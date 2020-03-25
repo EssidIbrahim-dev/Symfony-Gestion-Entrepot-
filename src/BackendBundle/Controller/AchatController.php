@@ -8,6 +8,8 @@ use BackendBundle\Entity\Product;
 use BackendBundle\Form\ProdAchatType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+
 
 class AchatController extends Controller
 {
@@ -35,6 +37,28 @@ class AchatController extends Controller
         $achats=$this->getDoctrine()->getRepository(Achat::class)->findBy(array('etat'=>1));
         return $this->render('@Backend/Achat/read.html.twig',array('achats'=>$achats));
 
+
+    }
+    public function pdfAction($id){
+        $achat=$this->getDoctrine()->getRepository(Achat::class)->find($id);
+
+        $prodachats= $this->getDoctrine()->getRepository(ProdAchat::class)
+            ->findBy(array('achat'=>$achat));
+        $html = $this->renderView('@Backend/Achat/pdf.html.twig', array(
+            'a'  => $achat,
+            'prodachats' => $prodachats,
+        ));
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html,array(
+                'default-header'=>null,
+                'encoding' => 'utf-8',
+                'images' => true,
+                'enable-javascript' => true,
+                'margin-right'  => 7,
+                'margin-left'  =>7,
+            )),
+            'file.pdf'
+        );
 
     }
     public function detailsProduitAction($id){

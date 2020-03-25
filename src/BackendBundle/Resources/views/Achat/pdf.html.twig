@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <div>
+            <p style="font-size: 50px;">
+                <strong>The maze</strong>
+            </p>
+        </div>
+
+        <div>
+            <p>(+216)53727298</p>
+            <p>Email: brahimhm470@gmail.com</p>
+        </div>
+
+    </nav>
+
+</div>
+
+<h4>Detail de Achat</h4>
+<table border="1" class="table table-hover table-bordered" id="dataTables-example">
+    <tr>
+        <th>Id</th>
+        <td>{{ a.id }}</td>
+    </tr>
+    <tr>
+        <th>Client</th>
+        <td>{{ a.clientAddress }}</td>
+    </tr>
+    <tr>
+        <th>Quantite d'unite</th>
+        <td>{{ a.quantite }}</td>
+    </tr>
+    <tr>
+        <th>Reference</th>
+        <td>{{ a.clientName }}</td>
+    </tr>
+    <tr>
+        <th>Date</th>
+        <td>{{ a.date|date }}</td>
+    </tr>
+</table>
+<br>
+<h4>List des produits</h4>
+<table border="1" class="table table-hover table-bordered" id="dataTables-example">
+    <th>Produit</th>
+    <th>Reference achat</th>
+    <th>Quantite</th>
+    <th>Prix</th>
+
+
+
+    {% for p in prodachats %}
+        <tr>
+
+            <td>{{ p.product.productName }}</td>
+            <td>{{ p.achat.clientName }}</td>
+            <td>{{ p.qte }}</td>
+            <td>{{ p.product.priceTTC*p.qte }} DT</td>
+        </tr>
+    {% else %}
+        <p>Pas de produit</p>
+    {% endfor %}
+
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+<div id="qrcode" style="height: 60px; width: 60px;"></div>
+<script>
+    $('#qrcode').qrcode("this plugin is great");
+
+</script>
+</body>
+</html>

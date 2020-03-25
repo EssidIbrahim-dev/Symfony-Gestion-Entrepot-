@@ -4,6 +4,13 @@
 {% endblock %}
 {% block body %}
     <div class="container">
+        <div class="row top-margin">
+            <div class="col-xs-offset-2 col-xs-8">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By reference" title="Type in a name" class="form-control">
+
+            </div>
+
+        </div>
         <div class="row">
             {%  for p in products %}
                 <div class="col-xs-6 col-md-4 top-margin">
@@ -25,5 +32,29 @@
         </div>
 
     </div>
+    <script>
+        function myFunction() {
+            console.log("trr");
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTables-example");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
 {% endblock %}
