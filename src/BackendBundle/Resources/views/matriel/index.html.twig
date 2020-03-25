@@ -1,0 +1,124 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+
+{% block body %}
+
+    <h1 style="color:#ffffff">Lists of Products !</h1>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="sidebar-search">
+
+                <div class="input-group custom-search-form">
+
+                    <input type="text" id="search" class="form-control" placeholder="Search here">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="#"> Matriels<span class="fa arrow"></span></a>
+                    <ul  class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul><br><br><br><br>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'materiels') {
+                                                    if (id !== 'error') {
+                                                        console.log(value[1]);
+                                                        a=value[0];
+
+                                                        entitySelector.append('<li><b style="color:#ffffff" >'+value[1]+'</b><a href="/pidev/web/app_dev.php/matriels/show/'+id+'">'+'<img src="~/uploads/post/2ee1176406224fdfd661b8932c6d9afd.jpeg" />'+'</a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi" style="color:#ffffff" >'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+
+    <table class="table table-hover table-bordered" style="border-color: #ffffff" id="dataTables-example">
+
+        <thead>
+        <tr>
+            <th style="color: #ffffff">IDM</th>
+            <th style="color: #ffffff">Type</th>
+            <th style="color: #ffffff">Reference</th>
+            <th style="color: #ffffff">Photo</th>
+            <th style="color: #ffffff">Actions</th>
+        </tr>
+        </thead>
+        <tbody style="color:#ffffff">
+        {% for matriel in matriels %}
+            <tr>
+                <td style="color: #ffffff"><a href="{{ path('matriel_show', { 'id': matriel.IDM }) }}">{{ matriel.IDM }}</a></td>
+                <td style="color: #ffffff">{{ matriel.type }}</td>
+                <td style="color: #ffffff">{{ matriel.reference }}</td>
+                <td> <img style="height: 10%;width: 10%" class="img-fluid" src="{{ asset('uploads/post/' ~ matriel.photo) }}" alt=""> </td>
+                <td style="color: #ffffff">
+                    <a href="{{ path('matriel_show', { 'id': matriel.IDM }) }}" class="btn btn-primary">show</a>
+                    |
+                    <a href="{{ path('matriel_edit', { 'id': matriel.IDM }) }}" class="btn btn-warning">edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matriel_add') }}" class="btn btn-warning">Create a new Matriel</a>
+        </li>
+    </ul>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+    <script src="{{asset('front/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/jquery-min.js')}}"></script>
+    <script src="{{asset('front/assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
+
+    <script src="{{asset('front/assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/wow.js')}}"></script>
+    <script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/jquery.slicknav.js')}}"></script>
+    <script src="{{asset('front/assets/js/main.js')}}"></script>
+    <script src="{{asset('front/assets/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/contact-form-script.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/summernote.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if is_granted('ROLE_GESTIONNAIRE') %}
+
+   <center><h2 class="contact-title">
+        <br><br>
+      ADD PRODUCT
+    </h2></center>
+    <div class="form-group has-error">
+    {{ form_start(Form) }}
+        {{ form_widget(Form.Product_name,{'attr':{'type':'text','class':'form-control','placeholder':'Product_name...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.Product_type,{'attr':{'type':'text','class':'form-control','placeholder':'Product_type...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.Reference,{'attr':{'type':'text','class':'form-control','placeholder':'Reference...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.Marque,{'attr':{'type':'text','class':'form-control','placeholder':'Marque...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.PriceHT,{'attr':{'type':'text','class':'form-control','placeholder':'Price_HT...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.PriceTTC,{'attr':{'type':'text','class':'form-control','placeholder':'Prix_TTC...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.TVA,{'attr':{'type':'text','class':'form-control','placeholder':'TVA...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.WEIGHT,{'attr':{'type':'text','class':'form-control','placeholder':'WEIGHT...'}}) }}
+        <br> <br> <br>
+        {{ form_widget(Form.photo,{'attr':{'type':'text','class':'form-control','placeholder':'photo...'}}) }}
+        <br> <br> <br>
+   <center> {{ form_widget(Form.Submit,{'attr':{'type':'text','class':'btn btn-common','placeholder':'ADD...'}}) }}        </center>
+        <br> <br> <br>
+        {{ form_end(Form) }}
+    </div>
+    {% else %}
+        <br><br><br>
+
+        <div class="alert alert-warning" role="alert">
+            <h3>
+               In order to add a new product you should an Gestionnaire,if you are not
+                you can list all our products :) :)  </h3>
+
+        </div>
+    {% endif %}
+{% endblock %}

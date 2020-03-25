@@ -1,0 +1,44 @@
+{% extends 'Client.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row top-margin">
+            <div class="col-xs-6">
+                <div class="card top-margin" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ asset('uploads/post/'~product.photo) }}" alt="Card image cap" style="width: 20rem; height: 20rem;">
+                    <a href="{{ path('add_achat',{'id':product.id}) }}" class="card-link btn btn-primary top-margin">Au panier</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row top-margin">
+            <table class="table table-hover table-bordered" id="dataTables-example">
+                <tr>
+                    <th style="color: white;">Name</th>
+                    <td style="color: white;">{{ product.productName }}</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">Reference</th>
+                    <td style="color: white;">{{ product.reference }}</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">Type</th>
+                    <td style="color: white;">{{ product.productType }}</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">Marque</th>
+                    <td style="color: white;">{{ product.marque }}</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">Weight</th>
+                    <td style="color: white;">{{ product.weight }}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}

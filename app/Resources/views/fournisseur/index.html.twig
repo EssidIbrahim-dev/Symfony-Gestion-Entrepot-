@@ -1,0 +1,45 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+
+{% block body %}
+    <h1 style="color:#ffffff">Fournisseurs list</h1>
+
+    <table style="border-color:#ffffff"class="table table-hover table-bordered" id="dataTables-example">
+
+    <thead>
+            <tr>
+                <th style="color:#ffffff">Id</th>
+                <th style="color:#ffffff">Firstname</th>
+                <th style="color:#ffffff">Lastname</th>
+                <th style="color:#ffffff">Phonenumber</th>
+                <th style="color:#ffffff">Address</th>
+                <th style="color:#ffffff">Email</th>
+                <th style="color:#ffffff">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fournisseur in fournisseurs %}
+            <tr>
+                <td style="color:#ffffff"><a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}">{{ fournisseur.id }}</a></td>
+                <td style="color:#ffffff">{{ fournisseur.firstname }}</td>
+                <td style="color:#ffffff">{{ fournisseur.lastname }}</td>
+                <td style="color:#ffffff">{{ fournisseur.phoneNumber }}</td>
+                <td style="color:#ffffff">{{ fournisseur.address }}</td>
+                <td style="color:#ffffff">{{ fournisseur.email }}</td>
+                <td style="color:#ffffff">
+
+                            <a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}" class="btn btn-primary">show</a>
+                    |
+                            <a href="{{ path('fournisseur_edit', { 'id': fournisseur.id }) }}" class="btn btn-warning">edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fournisseur_new') }}" class="btn btn-warning">Create a new fournisseur</a>
+        </li>
+    </ul>
+{% endblock %}

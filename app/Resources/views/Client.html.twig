@@ -1,0 +1,46 @@
+{% extends 'Backend.html.twig' %}
+ {% block title %} welcome Client{% endblock %}
+{% block socials %}
+ <div class="social_icons">
+  <div class="col-md-4 social_icons-left">
+   <a href="#" class="yui"><i class="fa fa-facebook i1"></i><span>300<sup>+</sup> Likes</span></a>
+  </div>
+  <div class="col-md-4 social_icons-left pinterest">
+   <a href="#"><i class="fa fa-google-plus i1"></i><span>500<sup>+</sup> Shares</span></a>
+  </div>
+{% block pannier %}
+{% endblock %}
+
+  <div class="clearfix"> </div>
+ </div>
+    {% endblock %}
+
+
+ {% block header %}
+  <!--sidebar nav start-->
+  <ul class="nav nav-pills nav-stacked custom-nav">
+
+   <li class="menu-list"><a href="#"><i class="lnr lnr-cart"></i> <span>Panier</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('panier_achat')}}">LIST</a> </li>
+     <li><a href="{{ path('index_achat')}}">ADD</a></li>
+    </ul>
+   </li>
+
+   <li class="menu-list"><a href="{{ path('commande_achat')}}"><i class="lnr lnr-inbox"></i> <span>Commandes</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('commande_achat')}}">Consulter</a> </li>
+
+    </ul>
+   </li>
+   <li class="menu-list"><a href="#"><i class="lnr lnr-neutral"></i> <span>Reclamations</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="#">LIST</a> </li>
+     <li><a href="#">ADD</a></li>
+    </ul>
+   </li>
+  </ul>
+ {% endblock %}
+{% block body %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+
+    <div>
+        <h6>List des Produits</h6>
+        <table class="table table-hover table-bordered" id="dataTables-example">
+            <th style="color: white;">Produit</th>
+            <th style="color: white;">Quantite</th>
+            <th style="color: white;">Unite</th>
+            <th style="color: white;">Delete</th>
+            <th style="color: white;">Edit</th>
+
+
+            {% for p in prodbesoins %}
+                {% set e=p.besoin.echeance %}
+                {{ e }}
+                <tr>
+
+                    <td style="color: white;">{{ p.product.productName }}</td>
+                    <td style="color: white;">{{ p.qte }}</td>
+                    <td style="color: white;">{{ p.unite }}</td>
+                    <td style="color: white;"><a href="{{ path('delete_prod_besoin',{'id':p.id,'idb':p.besoin.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                    <td style="color: white;"><a href="{{ path('edit_prod_besoin',{'id':p.id,'idb':p.besoin.id}) }}" class="btn btn-default">Edit</a></td>
+
+                </tr>
+            {% else %}
+                <p>Pas de produit</p>
+            {% endfor %}
+
+        </table>
+
+    </div>
+    <form action="{{ path('trait_besoin') }}" method="post">
+        <input type="text" name="besoin" id="besoin"    class="input-hidden" value="{{id }}" />
+
+        <div class="form-group">
+            <input id="e" name="e" class="form-control echeance" value="{{ e }}"   />
+            <br>
+            <script>
+                $('.echeance').datepicker({
+                    uiLibrary: 'bootstrap'
+                });
+            </script>
+
+
+
+
+        </div>
+        <div class="form-group field-entrepots">
+
+            <button type="submit" class="btn btn-primary btn-block">Editer date echeance</button>
+
+
+        </div>
+    </form>
+{% endblock %}

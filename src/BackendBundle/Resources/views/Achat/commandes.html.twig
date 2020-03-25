@@ -1,0 +1,33 @@
+{% extends 'Client.html.twig' %}
+{% block body %}
+    <h1 style="color: white;">Mes commandes</h1>
+{% for c  in commandes %}
+    {{ c[0].achat.clientType }}
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <tr>
+            <th style="color: white;">Product Name</th>
+            <th style="color: white;">Quantite</th>
+            <th style="color: white;">Prix Total</th>
+        </tr>
+        {% for i in 0..c|length-1  %}
+            <tr>
+                <td style="color: white;">{{ c[i].product.productName }}</td>
+                <td style="color: white;">{{ c[i].qte }}</td>
+                <td style="color: white;">{{ c[i].product.priceTTC*c[i].qte }} DT</td>
+
+            </tr>
+        {% else %}
+            <p style="color: white;"><strong>Pas de produit dans votre pannier</strong></p>
+
+
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+
+
+
+
+
+{% endfor %}
+{% endblock %}

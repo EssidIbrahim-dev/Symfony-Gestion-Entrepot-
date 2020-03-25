@@ -1,0 +1,36 @@
+{% extends 'Client.html.twig' %}
+
+{% block body %}
+    {{ prodachats|length }}
+    <div class="container">
+        <div class="row top-margin">
+            <table class="table table-hover table-bordered" id="dataTables-example">
+               <tr>
+                   <th style="color: white;">Product Name</th>
+                   <th style="color: white;">Quantite</th>
+                   <th style="color: white;">Prix Total</th>
+                   <th style="color: white;">Actions</th>
+               </tr>
+                {% for p in prodachats %}
+                    <tr>
+                        <td style="color: white;">{{ p.product.productName }}</td>
+                        <td style="color: white;">{{ p.qte }}</td>
+                        <td style="color: white;">{{ p.product.priceTTC*p.qte }} Dt</td>
+                        <td style="color: white;">
+                            <a href="{{ path('edit_achat',{'id':p.id}) }}" class="btn btn-default">Editer</a> | <a href="{{ path('delete_achat',{'id':p.id}) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <p style="color: white;"><strong>Pas de produit dans votre pannier</strong></p>
+
+
+                {% endfor %}
+            </table>
+        </div>
+        <div class="top-margin row">
+            <a href="{{ path('confirm_achat') }}" class="btn btn-warning">Confirmation l'achat</a>
+        </div>
+
+    </div>
+
+{% endblock %}

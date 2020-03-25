@@ -1,0 +1,85 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col ">
+                <div class="progressbar-wrapper">
+                    <ul class="progressbar">
+                        <li >Step 1</li>
+                        <li class="active">Step 2</li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div>
+            <form action="{{ path('add_besoin_product') }}" method="post">
+                <input type="text" name="besoin" id="besoin" class="input-hidden" value="{{ id }}" />
+
+                <div class="form-group field-entrepots">
+
+                    <select name="product" id="product" class="form-control">
+                        {% for p in products %}
+                            <option value="{{ p.id }}">{{ p.productName }}</option>
+                        {% endfor %}
+                    </select>
+
+
+                </div>
+                <div class="form-group field-entrepots">
+                    <input class="form-control" name="qte" placeholder="Quantite" id="qte">
+
+                </div>
+                <div class="form-group field-entrepots">
+                    <select name="unite" id="unite" class="form-control">
+
+                            <option value="parunite">Par unite</option>
+                            <option value="kg">En kg</option>
+                            <option value="tonne">Par tonne</option>
+
+                    </select>
+                </div>
+                <div class="form-group field-entrepots">
+
+                    <button type="submit" class="btn btn-primary btn-block">Ajouter <i class="fa fa-plus"></i></button>
+
+
+                </div>
+
+            </form>
+            <div>
+                <h6>List des Produits</h6>
+                <table class="table table-hover table-bordered" id="dataTables-example">
+                   <th style="color: white;">Produit</th>
+                   <th style="color: white;">Quantite</th>
+                   <th style="color: white;">Unite</th>
+                   <th style="color: white;">Delete</th>
+                   <th style="color: white;">Edit</th>
+
+
+                    {% for p in prodbesoins %}
+                        <tr>
+
+                            <td style="color: white;">{{ p.product.productName }}</td>
+                            <td style="color: white;">{{ p.qte }}</td>
+                            <td style="color: white;">{{ p.unite }}</td>
+                            <td style="color: white;"><a href="{{ path('delete_prod_besoin',{'id':p.id,'idb':p.besoin.id}) }}">Supprimer</a></td>
+                            <td style="color: white;"><a href="{{ path('edit_prod_besoin',{'id':p.id,'idb':p.besoin.id}) }}">Edit</a></td>
+
+                        </tr>
+                    {% else %}
+                        <p style="color: white;">Pas de produit</p>
+                    {% endfor %}
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock %}

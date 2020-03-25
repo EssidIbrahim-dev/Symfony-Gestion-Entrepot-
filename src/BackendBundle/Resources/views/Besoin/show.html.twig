@@ -1,0 +1,51 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h4>Detail de besoin</h4>
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <tr>
+            <th style="color: white;">Id</th>
+            <td style="color: white;">{{ besoin.id }}</td>
+        </tr>
+        <tr>
+            <th style="color: white;">Reference</th>
+            <td style="color: white;">{{ besoin.reference }}</td>
+        </tr>
+        <tr>
+            <th style="color: white;">Date</th>
+            <td style="color: white;">{{ besoin.date|date }}</td>
+        </tr>
+        <tr>
+            <th style="color: white;">Echeance</th>
+            <td style="color: white;">{{ besoin.echeance|date }}</td>
+        </tr>
+        <tr>
+            <th style="color: white;">Status</th>
+            <td style="color: white;">{{ besoin.statut }}</td>
+        </tr>
+        <tr>
+            <th style="color: white;">Entrepot</th>
+            <td style="color: white;">{{ besoin.entrepot.address }}</td>
+        </tr>
+    </table>
+    <br>
+    <h4>List des produits</h4>
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <th style="color: white;">Produit</th>
+        <th style="color: white;">Quantite</th>
+        <th style="color: white;">Unite</th>
+
+
+
+        {% for p in prodbesoins %}
+            <tr>
+
+                <td style="color: white;">{{ p.product.productName }}</td>
+                <td style="color: white;">{{ p.qte }}</td>
+                <td style="color: white;">{{ p.unite }}</td>
+            </tr>
+        {% else %}
+            <p style="color: white;">Pas de produit</p>
+        {% endfor %}
+
+    </table>
+{% endblock %}

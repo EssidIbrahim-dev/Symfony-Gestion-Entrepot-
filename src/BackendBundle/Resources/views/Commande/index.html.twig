@@ -1,0 +1,28 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h3 style="color: white;">List des commandes</h3>
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <th style="color: white;">Reference</th>
+        <th style="color: white;">Date</th>
+        <th style="color: white;">Fournisseur</th>
+        <th style="color: white;">Delete</th>
+        <th style="color: white;">Edit</th>
+
+
+
+        {% for c in commandes %}
+            <tr>
+                <td style="color: white;">{{ c.reference }}</td>
+                <td style="color: white;">{{ c.date|date }}</td>
+                <td style="color: white;">{{ c.fournisseur }}</td>
+                <td style="color: white;"><a href="{{ path('delete_cmd',{'id':c.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i></a></td>
+                <td style="color: white;"><a href="{{ path('edit_cmd',{'id':c.id,'f':c.fournisseur}) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a></td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ path('add_cmd') }}" class="btn btn-primary">Ajouter <i class="fa fa-plus"></i></a>
+
+{% endblock %}

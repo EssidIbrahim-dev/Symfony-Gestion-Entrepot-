@@ -1,0 +1,26 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h1 style="color:#ffffff">Fournisseur creation</h1>
+    <br>
+    <a  href="{{ path('fournisseur_index') }}">Back to the list</a>
+
+    {{ form_start(form) }}
+    {{ form_widget(form.firstname,{'attr':{'type':'text','class':'form-control','placeholder':'Firstname...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.lastname,{'attr':{'type':'text','class':'form-control','placeholder':'Lastname...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.phoneNumber,{'attr':{'type':'text','class':'form-control','placeholder':'PhoneNumber...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.address,{'attr':{'type':'text','class':'form-control','placeholder':'Address...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.email,{'attr':{'type':'text','class':'form-control','placeholder':'Emmail...'}}) }}
+    <br> <br> <br>
+        <br>
+
+                    <input class="btn btn-primary" type="submit" value="Ajouter" />
+
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <form action="{{ path('edit_cmd_trait') }}" method="post">
+        <input type="text" name="cmd" id="cmd" class="input-hidden" value="{{ id }}" />
+
+        <div class="form-group field-entrepots">
+            <select name="f" id="f" class="form-control">
+                {% for f in fournisseurs %}
+                    {% if f.firstname == f %}
+                        <option value="{{ f.firstname }}" selected>{{ f.firstname }}</option>
+                    {% else %}
+                        <option value="{{ f.firstname }}">{{ f.firstname }}</option>
+                    {% endif %}
+                {% endfor %}
+
+
+
+            </select>
+        </div>
+        <div class="form-group field-entrepots">
+
+            <button type="submit" class="btn btn-primary btn-block">Editer <i class="fa fa-pencil"></i></button>
+
+
+        </div>
+    </form>
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <th style="color: white;">#</th>
+        <th style="color: white;">Reference</th>
+        <th style="color: white;">Commande</th>
+        <th style="color: white;">Fournisseur</th>
+        {% for b in besoincmds %}
+
+            <tr>
+                <td style="color: white;">{{ b.id }}</td>
+
+                <td style="color: white;">{{ b.commande.reference }}</td>
+                <td style="color: white;">{{ b.commande.fournisseur }}</td>
+                <td style="color: white;"><a href="{{ path('delete_cmd_besoin',{'id':b.id,'f':f}) }}"><i class="fa fa-times"></i></a></td>
+
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

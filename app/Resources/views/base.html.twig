@@ -1,0 +1,274 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> {% block title %}  {% endblock %} </title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Hauling Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- For Testimonials slider -->
+    <link rel="stylesheet" href="{{ asset('client/css/flexslider.css') }}" type="text/css" media="all" />
+    <!-- //For Testimonials slider -->
+    <!-- //custom-theme files-->
+    <link href="{{ asset('client/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('client/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <!-- //custom-theme files-->
+
+    <!-- font-awesome-icons -->
+    <link href="{{ asset('client/css/font-awesome.css') }}" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- googlefonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <!-- //googlefonts -->
+
+</head>
+<body>
+
+<!-- banner -->
+<div class="banner">
+    <div class="banner-dott">
+        <!-- Top-Bar -->
+        <div class="top">
+            <div class="container">
+
+                <div class="col-md-6 top-left">
+                    <ul>
+                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +216 23008688</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 top-middle">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+        <div class="top-bar">
+            <div class="container">
+                <div class="header">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header navbar-left">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h1><a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('client/images/small.png') }}" style="opacity: 0.6"/></a></h1>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                            <nav class="cl-effect-15" id="cl-effect-15">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
+                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    <li><a href="{{ path('fos_user_security_logout') }}" class="header-top-button"><i class="lni-lock"></i> Deconnexion</a></li>
+                                    {% else %}
+                                    <li><a href="{{ path('fos_user_security_login') }}" class="header-top-button"><i class="lni-lock"></i> Log In</a></li>
+                                    <li><a href="{{ path('fos_user_registration_register') }}" class="header-top-button"><i class="lni-pencil"></i> Register</a></li>
+                                    {% endif %}
+                                    <li class="dropdown">
+                                        <a href="" class="dropdown-toggle" data-hover="Products" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('add_product') }}">ADD Products</a></li>
+                                            <li><a href="{{ path('list_product') }}">List Products</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href=""data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="">Mails: kalboussihazem67@gmail.com , kalboussihazem07@gmail.com</a></li>
+                                            <li><a href=""></a>Phone Numbers: 23008688 , 25142394</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-banner">
+            <div id="typer"></div>
+
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+
+{% block body %}
+
+    <!--End Page Inner -->
+
+{% endblock %}
+<!-- //Clients -->
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="agileits_w3layouts_footer_grids">
+            <div class="col-md-4 agileits_w3layouts_footer_grid">
+                <h3>Call Us Now</h3>
+                <ul>
+                    <li><span>Office Phone :</span> (+216) 25142394</li>
+                </ul>
+            </div>
+            <div class="col-md-4 agileits_w3layouts_footer_grid">
+                <h3>send a message</h3>
+                <ul>
+                    <li><span>Email :</span> <a href="mailto:info@example.com">hazem.kalboussi1@esprit.tn</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 agileits_w3layouts_footer_grid">
+                <h3>Subscribe Now</h3>
+                <form action="#" method="post">
+                    <input type="email" name="Email" placeholder="Email" required="">
+                    <input type="submit" value="Submit ">
+                </form>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+
+        <div class="col-md-4 w3_agileits_footer_grid">
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+</div>
+<div class="wthree_copy_right copyright">
+    <div class="container">
+        <div class="copyrighttop">
+            <ul>
+                <li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a class="facebook" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a class="facebook" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                <li><a class="facebook" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <p>© 2020 MAZE. All rights reserved | Design by <a href="http://w3layouts.com/">THE MAZE GROUP</a></p>
+    </div>
+</div>
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                THE MAZE
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('client/images/1.jpg') }}" alt=" " class="img-responsive" />
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //bootstrap-modal-pop-up -->
+<!-- js -->
+<script type="text/javascript" src="{{ asset('client/js/jquery-2.1.4.min.js') }}"></script>
+<!-- for bootstrap working -->
+<script src="{{ asset('client/js/bootstrap.js') }}"></script>
+<!-- //for bootstrap working -->
+<!-- //js -->
+<!-- //here starts scrolling icon -->
+<script src="{{ asset('client/js/SmoothScroll.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('client/js/move-top.js') }}"></script>
+<script type="text/javascript" src="{{ asset('client/js/easing.js') }}"></script>
+<!-- here stars scrolling script -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*
+         var defaults = {
+         containerID: 'toTop', // fading element id
+         containerHoverID: 'toTopHover', // fading element hover id
+         scrollSpeed: 1200,
+         easingType: 'linear'
+         };
+         */
+
+        $().UItoTop({ easingType: 'easeOutQuart' });
+
+    });
+</script>
+<!-- //here ends scrolling script -->
+<!-- //here ends scrolling icon -->
+
+<!-- scrolling script -->
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+    });
+</script>
+<!-- //scrolling script -->
+
+<!-- FlexSlider-JavaScript -->
+<script defer src="{{ asset('client/js/jquery.flexslider.js') }}"></script>
+<script type="text/javascript">
+    $(function(){
+        SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function(slider){
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>
+<!-- //FlexSlider-JavaScript -->
+
+<!-- typer js--><!-- For banner text -->
+<script src='{{ asset('client/js/jquery.typer.js') }}'></script>
+<script>
+    var win = $(window),
+        foo = $('#typer');
+
+    foo.typer(['THE MAZE', 'THE BEST WAREHOUSE IN ALL THE WORLD', 'QUALITY SERVICE AFFORDABLE PRICE']);
+
+    // unneeded...
+    win.resize(function(){
+        var fontSize = Math.max(Math.min(win.width() / (1 * 10), parseFloat(Number.POSITIVE_INFINITY)), parseFloat(Number.NEGATIVE_INFINITY));
+
+        foo.css({
+            fontSize: fontSize * .8 + 'px'
+        });
+    }).resize();
+</script>
+<!-- //typer js--><!-- //For banner text -->
+
+<!-- stats -->
+<script src="{{ asset('client/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('client/js/jquery.countup.js') }}"></script>
+<script>
+    $('.counter').countUp();
+</script>
+<!-- //stats -->
+
+</body>
+</html>

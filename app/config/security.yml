@@ -1,0 +1,47 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+
+       ROLE_USER: ROLE_USER
+       ROLE_ADMIN: ROLE_ADMIN
+       ROLE_CLIENT: ROLE_CLIENT
+       ROLE_GESTIONNAIRE: ROLE_GESTIONNAIRE
+       ROLE_AGENTFINANCIER: ROLE_AGENTFINANCIER
+       ROLE_AGENTTRANSPORT: ROLE_AGENTTRANSPORT
+
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                success_handler: redirect.after.login
+
+
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+            remember_me:
+                secret: '%secret%'
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+    - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/registration-form-submission$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/(login|register)$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/agentgestionnaire, role: ROLE_GESTIONNAIRE }
+    - { path: ^/client, role: ROLE_CLIENT }
+    
+
+

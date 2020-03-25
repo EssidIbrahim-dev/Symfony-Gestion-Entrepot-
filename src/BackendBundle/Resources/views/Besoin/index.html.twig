@@ -1,0 +1,28 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h3>List des besoins</h3>
+    <table class="table table-hover table-bordered" id="dataTables-example">
+        <th style="color: white;">Reference</th>
+        <th style="color: white;">Echeance</th>
+        <th style="color: white;">Entrepot</th>
+        <th style="color: white;">Details</th>
+        <th style="color: white;">Supprimer</th>
+        <th style="color: white;">Edit</th>
+        <th style="color: white;">PDF</th>
+
+        {% for b in besoins %}
+            <tr>
+                <td>{{ b.reference }}</td>
+                <td>{{ b.echeance|date }}</td>
+                <td>{{ b.entrepot.address }}</td>
+                <td><a href="{{ path('read_besoin',{'id':b.id}) }}" class="btn btn-warning"><i class="fa fa-info"></i></a></td>
+                <td><a href="{{ path('delete_besoin',{'id':b.id}) }}" class="btn btn-danger "><i class="fa fa-times"></i></a></td>
+                <td><a href="{{ path('edit_besoin',{'id':b.id}) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a></td>
+                <td><a href="{{ path('pdf_generate',{'id':b.id}) }}" class="btn btn-success"><i class="fa fa-download"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ path('backend_besoin_createOne') }}">Ajouter votre besoin</a>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'Client.html.twig' %}
+{% block pannier %}
+    <a href="{{ path('panier_achat') }}" class="btn btn-default"><i class="lnr lnr-cart"></i> ({{ achat.quantite }})</a>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {%  for p in products %}
+                <div class="col-xs-6 col-md-4 top-margin">
+                    <div class="card" >
+                        <img class="card-img-top" src="{{ asset('uploads/post/'~p.photo) }}" alt="Card image cap" style="width: 15rem; height: 15rem;">
+                        <div class="card-body">
+
+                            <p class="card-text" ><h3 style="color: white;">{{ p.productName }}</h3>
+                            <h6 style="color: #9e9d24;">{{ p.priceTTC }} DT</h6>
+                            </p>
+                            <a href="{{ path('add_achat',{'id':p.id}) }}" class="card-link btn btn-primary">Au panier</a>
+                            <a href="{{ path('index_achat_show',{'id':p.id}) }}" class="card-link btn btn-success">Details</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

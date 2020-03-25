@@ -1,0 +1,31 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+            <h3 style="color: white;">List des achats</h3>
+            <table class="table table-hover table-bordered" id="dataTables-example">
+                <th style="color: white;">Reference</th>
+                <th style="color: white;">Date</th>
+                <th style="color: white;">Client</th>
+                <th style="color: white;">Client</th>
+
+
+
+
+                {% for a in achats %}
+                    <tr>
+                        <td style="color: white;">{{ c.reference }}</td>
+                        <td style="color: white;">{{ c.date|date }}</td>
+                        <td style="color: white;">{{ c.fournisseur }}</td>
+
+
+
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+
+    </div>
+
+{% endblock %}

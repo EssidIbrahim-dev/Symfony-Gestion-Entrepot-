@@ -1,0 +1,20 @@
+admin_dashboard:
+    path:     /admin
+    defaults: { _controller: UserBundle:Default:index }
+
+agentgest:
+     path:     /agentgestionnaire
+     defaults: { _controller: UserBundle:User:AgentGest }
+
+Client:
+     path:     /client
+     defaults: { _controller: UserBundle:User:Client }
+
+agentTrans:
+     path:     /agentTransport
+     defaults: { _controller: UserBundle:User:AgentTra }
+
+agentFinan:
+     path:     /agentFinancier
+     defaults: { _controller: UserBundle:User:AgentFinanc }
+

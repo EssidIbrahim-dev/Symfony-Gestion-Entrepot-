@@ -1,0 +1,114 @@
+backend_homepage:
+    path:     /backend
+    defaults: { _controller: BackendBundle:Default:index }
+backend_fournisseur:
+    resource: "@BackendBundle/Resources/config/routing/fournisseur.yml"
+    prefix:   /f
+
+backend_matriel:
+    resource: "@BackendBundle/Resources/config/routing/matriel.yml"
+    prefix:   /matriels
+
+backend_besoin_createOne:
+    path: /besoin/create/1
+    defaults: { _controller: BackendBundle:Besoin:createOne }
+add_besoin:
+    path: /besoin/add
+    defaults: { _controller: BackendBundle:Besoin:addBesoin }
+
+add_product:
+    path: /add
+    defaults: { _controller: BackendBundle:Product:add }
+list_product:
+    path: /list
+    defaults: { _controller: BackendBundle:Product:list }
+detailedpost:
+    path: /detail
+    defaults: { _controller: BackendBundle:Product:show }
+search:
+    path:     /search
+    defaults: { _controller: BackendBundle:Product:search }
+index_achat:
+    path: /achats
+    defaults: { _controller: BackendBundle:Achat:index}
+index_achat_show:
+    path: /achats/show/{id}
+    defaults: { _controller: BackendBundle:Achat:detailsProduit}
+add_achat:
+    path: /achats/add/{id}
+    defaults: { _controller: BackendBundle:Achat:addAchat}
+panier_achat:
+    path: /achats/panier
+    defaults: { _controller: BackendBundle:Achat:panier}
+delete_achat:
+    path: /achats/panier/delete/{id}
+    defaults: { _controller: BackendBundle:Achat:delete}
+edit_achat:
+    path: /achats/panier/edit/{id}
+    defaults: { _controller: BackendBundle:Achat:edit}
+confirm_achat:
+    path: /achats/panier/confirm
+    defaults: { _controller: BackendBundle:Achat:confirm}
+commande_achat:
+    path: /achats/commandes
+    defaults: { _controller: BackendBundle:Achat:commandes}
+backend_besoin_createOne:
+    path: /besoin/create/1
+    defaults: { _controller: BackendBundle:Besoin:createOne }
+add_besoin:
+    path: /besoin/add
+    defaults: { _controller: BackendBundle:Besoin:addBesoin }
+add_besoin_product:
+    path: /besoin/add/product
+    defaults: { _controller: BackendBundle:Besoin:addBesoinProduct }
+step2:
+    path:     /{id}/step2
+    defaults: { _controller: BackendBundle:Besoin:createTwo }
+delete_prod_besoin:
+    path:     /besoin/delete/{id}/{idb}
+    defaults: { _controller: BackendBundle:Besoin:deleteProdBesoin}
+edit_prod_besoin:
+    path:     /besoin/edit/{id}/{idb}
+    defaults: { _controller: BackendBundle:Besoin:editProdBesoin}
+edit_product_besoin:
+    path:     /besoin/edit/product
+    defaults: { _controller: BackendBundle:Besoin:editProductBesoin}
+index_besoins:
+    path: /besoins
+    defaults: { _controller: BackendBundle:Besoin:index}
+read_besoin:
+    path: /besoins/show/{id}
+    defaults: { _controller: BackendBundle:Besoin:show}
+delete_besoin:
+    path: /besoin/delete/{id}
+    defaults: { _controller: BackendBundle:Besoin:delete}
+edit_besoin:
+    path: /besoin/edit/{id}
+    defaults: { _controller: BackendBundle:Besoin:edit}
+trait_besoin:
+    path: /besoin/edit/trait
+    defaults: { _controller: BackendBundle:Besoin:edittrait}
+pdf_generate:
+    path: /besoin/pdf/{id}
+    defaults: { _controller: BackendBundle:Besoin:pdf}
+add_cmd:
+    path: /cmd/add
+    defaults: { _controller: BackendBundle:Commande:addCmd}
+add_cmd_trait:
+    path: /cmd/add/trait
+    defaults: { _controller: BackendBundle:Commande:addCmdTrait}
+index_cmd:
+    path: /cmds
+    defaults: { _controller: BackendBundle:Commande:index}
+delete_cmd:
+    path: /delete/cmd/{id}
+    defaults: { _controller: BackendBundle:Commande:delete}
+edit_cmd:
+    path: /edit/cmd/{id}/{f}
+    defaults: { _controller: BackendBundle:Commande:edit}
+edit_cmd_trait:
+    path: /edit/cmd/trait
+    defaults: { _controller: BackendBundle:Commande:editCmd}
+delete_cmd_besoin:
+    path: /delete/cmd/besoin/{id}/{f}
+    defaults: { _controller: BackendBundle:Commande:deleteCmdBesoin}

@@ -1,0 +1,27 @@
+matriel_index:
+    path:     /
+    defaults: { _controller: "BackendBundle:MatrielMag:index" }
+    methods:  GET
+
+matriel_show:
+    path:     /show/{id}
+    defaults: { _controller: "BackendBundle:MatrielMag:show" }
+    methods:  GET
+
+matriel_add:
+    path:     /new
+    defaults: { _controller: "BackendBundle:MatrielMag:add" }
+    methods:  [GET, POST]
+
+matriel_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:MatrielMag:edit" }
+    methods:  [GET, POST]
+
+matriel_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:MatrielMag:delete" }
+    methods:  DELETE
+ajax_search:
+    path:     /search
+    defaults: { _controller: BackendBundle:MatrielMag:search }

@@ -1,0 +1,40 @@
+ {% extends 'Backend.html.twig' %}
+ {% block title %} welcome gestionnaire{% endblock %}
+ {% block header %}
+  <!--sidebar nav start-->
+  <ul class="nav nav-pills nav-stacked custom-nav">
+   <li class="active"><a href=""><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a></li>
+   <li class="menu-list">
+    <a href="#"><i class="lnr lnr-cog"></i>
+     <span>Fournisseurs</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('fournisseur_index')}}">List</a> </li>
+     <li><a href="{{ path('fournisseur_new')}}">ADD</a></li>
+    </ul>
+   </li>
+   <li class="menu-list"><a href="#"><i class="lnr lnr-envelope"></i> <span>MATERIAL</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('matriel_index')}}">LIST</a> </li>
+     <li><a href="{{ path('matriel_add')}}">ADD</a></li>
+    </ul>
+   </li>
+   <li class="menu-list"><a href="#"><i class="lnr lnr-tag"></i> <span>Besoin</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('index_besoins')}}">LIST</a> </li>
+     <li><a href="{{ path('backend_besoin_createOne')}}">ADD</a></li>
+    </ul>
+   </li>
+   <li class="menu-list"><a href="#"><i class="lnr lnr-store"></i> <span>Commandes</span></a>
+    <ul class="sub-menu-list">
+     <li><a href="{{ path('index_cmd')}}">LIST</a> </li>
+     <li><a href="{{ path('add_cmd')}}">ADD</a></li>
+    </ul>
+   </li>
+  </ul>
+     {% block stylesheet %}
+         {% endblock %}
+ {% endblock %}
+{% block body %}
+ <img src="{{ asset('client/images/1.jpg') }}" alt=" " class="img-responsive" />
+<h1>Agent Gestionnaire</h1>
+ {% endblock %}

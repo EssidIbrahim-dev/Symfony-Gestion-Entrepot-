@@ -1,0 +1,14 @@
+{% extends 'Client.html.twig' %}
+
+{% block body %}
+    <div class="container ">
+        <div class="top-margin">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="top-margin btn btn-primary" type="submit">Save</button>
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+{% endblock %}

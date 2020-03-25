@@ -1,0 +1,106 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+    <div>
+
+    </div>
+
+{% block body %}
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+        .form {
+            position: relative;
+            z-index: 1;
+            background:  #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        .form input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+            border-radius: 1;
+        }
+        .form button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: linear-gradient(to right, #cc0000 0%, #800000 100%);
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+        .form button:hover,.form button:active,.form button:focus {
+            background: #ff214f;
+        }
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .form .message a {
+            color: #ff214f;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .connexion{
+            line-height: 1.1;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+    </style>
+    <section>
+        <div class="login-page">
+            <div class="form">
+                <label style="color: #000000; margin-bottom: 10%" class="connexion">Inscription</label>
+
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username, {'attr': {'class': 'input_text required','placeholder':'Pseudo'}}) }}
+
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'input_text required','placeholder':'Adresse mail'}}) }}
+
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name, {'attr': {'class': 'input_text required','placeholder':'Nom'}}) }}
+                {{ form_errors(form.surname) }}
+                {{ form_widget(form.surname, {'attr': {'class': 'input_text required','placeholder':'Prénom'}}) }}
+                {{ form_errors(form.num_tel) }}
+                {{ form_widget(form.num_tel, {'attr': {'class': 'input_password required','placeholder':'Phone Number'}}) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input_password required','placeholder':'Mot de passe'}}) }}
+
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input_password required', 'IDU': 'contact_name','placeholder':'Confirmer mot de passe'}}) }}
+                <button id="_submit" name="_submit" type="submit">Inscription</button>
+                <p class="message">Already registered? <a href="{{ path('fos_user_security_login') }}">Sign In</a></p>
+            </div>
+            </div>
+    </section>
+    {{ form_end(form) }}
+{% endblock %}

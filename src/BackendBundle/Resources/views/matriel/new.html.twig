@@ -1,0 +1,23 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h1 style="color:#ffffff">Matriel creation</h1>
+    <br>
+    <a href="{{ path('matriel_index') }}">Back to the list</a>
+
+   {{ form_start(form) }}
+    {{ form_widget(form.Type,{'attr':{'type':'text','class':'form-control','placeholder':'Type...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.Reference,{'attr':{'type':'text','class':'form-control','placeholder':'Reference...'}}) }}
+    <br> <br> <br>
+    {{ form_widget(form.photo) }}
+    <br> <br> <br>
+
+        <br>
+
+                    <input class="btn btn-primary" type="submit" value="Ajouter" />
+
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

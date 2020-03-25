@@ -1,0 +1,57 @@
+{% extends 'AgentGestionnaire.html.twig' %}
+{% block body %}
+    <h1 style="color: #ffffff">Matriel</h1>
+
+    <table style="border-color: #ffffff" class="table table-hover table-bordered"  id="dataTables-example">
+        <tbody>
+            <tr>
+                <th style="color: #ffffff">IDM</th>
+                <td style="color: #ffffff">{{ matriel.IDM }}</td>
+            </tr>
+            <tr>
+                <th style="color: #ffffff">Type</th>
+                <td style="color: #ffffff">{{ matriel.type }}</td>
+            </tr>
+            <tr>
+                <th style="color: #ffffff">Reference</th>
+                <td style="color: #ffffff">{{ matriel.reference }}</td>
+            </tr>
+
+            <tr>
+                <th style="color: #ffffff">Photo</th>
+                <td><img class="img-fluid" src="{{ asset('uploads/post/' ~ matriel.photo) }}" style="height: 7%;width: 7%" alt=""></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matriel_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('matriel_edit', { 'id': matriel.IDM }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit"  class="btn btn-warning" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+    <script src="{{asset('front/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/jquery-min.js')}}"></script>
+    <script src="{{asset('front/assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
+
+    <script src="{{asset('front/assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/wow.js')}}"></script>
+    <script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/jquery.slicknav.js')}}"></script>
+    <script src="{{asset('front/assets/js/main.js')}}"></script>
+    <script src="{{asset('front/assets/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/contact-form-script.min.js')}}"></script>
+    <script src="{{asset('front/assets/js/summernote.js')}}"></script>
+{% endblock %}
