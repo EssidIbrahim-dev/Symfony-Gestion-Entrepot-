@@ -4,30 +4,49 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <div class="row top-margin">
-            <div class="col-xs-offset-2 col-xs-8">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By reference" title="Type in a name" class="form-control">
+        <input class="form-control" type="range" id="points" name="points" min="0" max="10">
 
-            </div>
+        <div class="row top-margin">
+            <form action="{{ path('index_achat') }}" method="post">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <input type="text" name="myInput" id="myInput" onkeyup="myFunction()" placeholder="Search By Product name" title="Type in a name" class="form-control">
+
+                </div>
+                <div class="col-xs-1">
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-search" style="color: white;"></i></button>
+
+                </div>
+            </form>
+
+
 
         </div>
         <div class="row">
             {%  for p in products %}
                 <div class="col-xs-6 col-md-4 top-margin">
                     <div class="card" >
-                        <img class="card-img-top" src="{{ asset('uploads/post/'~p.photo) }}" alt="Card image cap" style="width: 15rem; height: 15rem;">
+                        <div class="product-top">
+                            <img class="card-img-top" src="{{ asset('uploads/post/'~p.photo) }}" alt="Card image cap" style="width: 15rem; height: 15rem;">
+                            <div class="overlay-achat">
+                                <a href="{{ path('add_achat',{'id':p.id}) }}" class="btn btn-secondary" ><i class="fa fa-shopping-cart" style="color: #9e9d24; width: 0.8re;"></i></a>
+                                <a href="{{ path('index_achat_show',{'id':p.id}) }}" class="btn btn-secondary"><i class="fa fa-eye" style="color: #9e9d24; width: 0.8rem;"></i></a>
+                            </div>
+                        </div>
+
                         <div class="card-body">
 
                             <p class="card-text" ><h3 style="color: white;">{{ p.productName }}</h3>
-                            <h6 style="color: #9e9d24;">{{ p.priceTTC }} DT</h6>
+                            <h4 class="mx-auto" style="color: #9e9d24;">{{ p.priceTTC }} DT</h4>
                             </p>
-                            <a href="{{ path('add_achat',{'id':p.id}) }}" class="card-link btn btn-primary">Au panier</a>
-                            <a href="{{ path('index_achat_show',{'id':p.id}) }}" class="card-link btn btn-success">Details</a>
+
+
                         </div>
                     </div>
 
 
                 </div>
+                {% else %}
+                <h4 style="color: white;">Pas de produit</h4>
             {% endfor %}
         </div>
 

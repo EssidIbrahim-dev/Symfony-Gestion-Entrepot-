@@ -79,3 +79,16 @@
 .top-margin{
     margin-top: 4%;
 }
+.overlay-achat{
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 10%;
+    margin-left: 0;
+    width: 70px;
+}
+.product-top:hover .overlay-achat{
+    opacity: 1;
+    margin-left: 1%;
+    transition: 0.5s;
+}

@@ -13,7 +13,7 @@ use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class AchatController extends Controller
 {
-    public function indexAction(){
+    public function indexAction(Request $request){
         $user=$this->getUser();
         $achat=$this->getDoctrine()->getRepository(Achat::class)->findOneBy(array('clientAddress'=>$user->getUsername(),'etat'=>0));
         if(!$achat){
@@ -21,7 +21,15 @@ class AchatController extends Controller
           $achat->setDate( new \DateTime('now') );
           $achat->setClientAddress($user->getUsername());
           $achat->setClientName($user->getUsername());
-          $achat->setClientType("client");
+            $achats=$this->getDoctrine()->getRepository(Achat::class)->findAll();
+            $longeur=count($achats);
+            $ref="Reff".$user->getUsername();
+            $ch="";
+            for($i=0;$i<10-$longeur;$i++){
+                $ch.='0';
+            }
+            $ref.=$ch.$longeur;
+          $achat->setClientType($ref);
           $achat->setEtat(0);
           $achat->setQuantite(0);
             $em= $this->getDoctrine()->getManager();
@@ -29,10 +37,27 @@ class AchatController extends Controller
             $em->flush();
         }
         $products=$this->getDoctrine()->getRepository(Product::class)->findAll();
+
+        if($request->isMethod('POST')){
+            $name=$request->request->get('myInput');
+            $products=$this->getDoctrine()->getRepository(Product::class)->findBy(array('productName'=>$name));
+
+        }
         return $this->render('@Backend/Achat/index.html.twig',array('products'=>$products,'user'=>$user,'achat'=>$achat));
 
 
     }
+    public function generateReference($user){
+        $achats=$this->getDoctrine()->getRepository(Achat::class)->findAll();
+        $longeur=count($achats);
+        $ref="Reff".$user->getUsername();
+        for($i=0;$i<10-$longeur;$i++){
+            $ref=$ref."0";
+        }
+        $ref=$ref.$longeur;
+        echo $ref;
+    }
+
     public function readAction(){
         $achats=$this->getDoctrine()->getRepository(Achat::class)->findBy(array('etat'=>1));
         return $this->render('@Backend/Achat/read.html.twig',array('achats'=>$achats));
@@ -135,6 +160,16 @@ class AchatController extends Controller
         $em=$this->getDoctrine()->getManager();
         $em->persist($achat);
         $em->flush();
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Chaya3ni Newsletter')
+            ->setFrom('themazewhm@gmail.com')
+            ->setTo('brahimhm470@gmail.com')
+            ->setBody(
+              "Votre commande est confirmez sous la reference".$achat->getClientName()."<br> et selivré dans 4 jours ouvrables",
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
+
         return $this->redirectToRoute("index_achat");
     }
     public function commandesAction(){
